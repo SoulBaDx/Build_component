@@ -18,10 +18,6 @@ import { RouterLink } from '@angular/router';
           <p class="text-xl text-zinc-400 max-w-2xl mx-auto font-light mb-8">
             Escolha um dos modelos de configuração inicial (Onboarding) para a sua loja de delivery.
           </p>
-          <a href="/rpg-templates.zip" download class="inline-flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-lg transition-colors shadow-lg shadow-amber-900/20">
-            <span class="material-icons">download</span>
-            Baixar Código (Angular + Next.js)
-          </a>
         </div>
 
         <h2 class="font-display text-2xl text-white border-b border-zinc-800 pb-2 mb-8 uppercase tracking-widest">Estilo Clássico / SaaS</h2>
@@ -39,6 +35,28 @@ import { RouterLink } from '@angular/router';
               <div class="p-6">
                 <p class="text-sm text-zinc-400 mb-6">{{ v.desc }}</p>
                 <div class="flex items-center text-amber-500 font-medium text-sm group-hover:text-amber-400 transition-colors">
+                  Visualizar Setup <span class="material-icons text-sm ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                </div>
+              </div>
+            </a>
+          }
+        </div>
+
+        <h2 class="font-display text-2xl text-white border-b border-zinc-800 pb-2 mb-8 uppercase tracking-widest">Estilo SaaS / Moderno</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          @for (v of saasVariations; track v.path) {
+            <a [routerLink]="v.path" class="group block relative rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/50 hover:border-amber-500/50 transition-all hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(217,119,6,0.15)] backdrop-blur-sm">
+              <div class="aspect-[4/3] relative overflow-hidden">
+                <img [src]="v.image" alt="{{v.name}}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                  <span class="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider rounded-full border border-blue-500/30 backdrop-blur-md mb-2 inline-block">{{ v.style }}</span>
+                  <h3 class="text-2xl font-bold text-white font-display">{{ v.name }}</h3>
+                </div>
+              </div>
+              <div class="p-6">
+                <p class="text-sm text-zinc-400 mb-6">{{ v.desc }}</p>
+                <div class="flex items-center text-blue-500 font-medium text-sm group-hover:text-blue-400 transition-colors">
                   Visualizar Setup <span class="material-icons text-sm ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
                 </div>
               </div>
@@ -94,6 +112,51 @@ export class IndexComponent {
       style: 'Glassmorphism / Elegante', 
       desc: 'Um modal de vidro fosco flutuando sobre a taverna à luz de velas, com inputs flutuantes e design minimalista.',
       image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop' 
+    }
+  ];
+
+  saasVariations = [
+    { 
+      path: '/setup13', 
+      name: 'O Mercador Moderno', 
+      style: 'SaaS / Clean', 
+      desc: 'Um layout limpo e moderno, focado na conversão, com branding forte e formulário direto.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup14', 
+      name: 'Workspace', 
+      style: 'SaaS / Dark', 
+      desc: 'Design escuro e elegante, focado em produtividade e configuração de ambiente de trabalho.',
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup15', 
+      name: 'Lançamento Rápido', 
+      style: 'SaaS / Split', 
+      desc: 'Layout dividido com forte proposta de valor e formulário de conversão rápida.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup16', 
+      name: 'Minimalista', 
+      style: 'SaaS / Light', 
+      desc: 'Design claro, minimalista e direto ao ponto, com foco total na usabilidade.',
+      image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup17', 
+      name: 'Dark Mode Pro', 
+      style: 'SaaS / Premium', 
+      desc: 'Visual premium em dark mode, ideal para produtos de alto valor agregado.',
+      image: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup18', 
+      name: 'Loja Express', 
+      style: 'SaaS / Simples', 
+      desc: 'O mais simples e direto possível. Perfeito para quem quer começar a vender em segundos.',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800&auto=format&fit=crop' 
     }
   ];
 
@@ -153,6 +216,20 @@ export class IndexComponent {
       style: 'Profecia / Cósmico', 
       desc: 'Consulte os astros e sele o destino da sua loja em um ambiente cósmico e estrelado.',
       image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup12', 
+      name: 'A Guilda dos Mercadores', 
+      style: 'RPG / Diálogo', 
+      desc: 'Diálogo interativo com a Recepcionista da Guilda, estilo RPG.',
+      image: 'https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=800&auto=format&fit=crop' 
+    },
+    { 
+      path: '/setup19', 
+      name: 'A Jornada do Mercador', 
+      style: 'Primeira Pessoa', 
+      desc: 'Versão estendida com monólogo inicial, entrada na guilda e transição de cenários animados.',
+      image: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=800&auto=format&fit=crop' 
     }
   ];
 }

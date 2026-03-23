@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CodeModalComponent } from './code-modal.component';
 
 @Component({
   selector: 'app-setup-var1',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-center justify-center p-4 relative font-sans">
       <div class="absolute inset-0 z-0">
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <!-- Setup Card -->
       <div class="relative z-10 max-w-xl w-full bg-parchment rounded-sm shadow-2xl border-4 border-ink-light p-8 sm:p-12 text-ink">
@@ -52,16 +54,19 @@ import { FormsModule } from '@angular/forms';
         </form>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var1" (closeEvent)="showCode = false"></app-code-modal> }`
 })
-export class SetupVar1Component {}
+export class SetupVar1Component {
+  showCode = false;}
 
 @Component({
   selector: 'app-setup-var2',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex flex-col md:flex-row font-sans bg-zinc-950 text-zinc-200">
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
       
       <!-- Left Side: Image 2 (Moody Tavern) -->
       <div class="md:w-1/2 relative min-h-[30vh] md:min-h-screen">
@@ -109,13 +114,15 @@ export class SetupVar1Component {}
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var2" (closeEvent)="showCode = false"></app-code-modal> }`
 })
-export class SetupVar2Component {}
+export class SetupVar2Component {
+  showCode = false;}
 
 @Component({
   selector: 'app-setup-var3',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-center justify-center p-4 font-sans relative">
       <!-- Background Image 3 (Candlelit Tavern) -->
@@ -125,6 +132,7 @@ export class SetupVar2Component {}
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <!-- Glassmorphism Card -->
       <div class="relative z-10 w-full max-w-lg bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 sm:p-12 shadow-2xl">
@@ -154,9 +162,11 @@ export class SetupVar2Component {}
         </form>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var3" (closeEvent)="showCode = false"></app-code-modal> }`
 })
-export class SetupVar3Component {}
+export class SetupVar3Component {
+  showCode = false;}
 
 // ==========================================
 // NOVOS TEMPLATES: ESTILO CUTSCENE / DIÁLOGO
@@ -164,7 +174,7 @@ export class SetupVar3Component {}
 
 @Component({
   selector: 'app-setup-var4',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex flex-col font-sans relative bg-black overflow-hidden">
       <div class="absolute inset-0 z-0">
@@ -174,6 +184,7 @@ export class SetupVar3Component {}
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <!-- Top Content Area (Empty to show background) -->
       <div class="flex-grow relative z-10"></div>
@@ -253,9 +264,11 @@ export class SetupVar3Component {}
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var4" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar4Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';
@@ -266,7 +279,7 @@ export class SetupVar4Component {
 
 @Component({
   selector: 'app-setup-var5',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-center justify-center p-4 font-sans relative bg-[#1a100c]">
       <div class="absolute inset-0 z-0">
@@ -276,6 +289,7 @@ export class SetupVar4Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16">
         
@@ -358,9 +372,11 @@ export class SetupVar4Component {
 
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var5" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar5Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';
@@ -371,7 +387,7 @@ export class SetupVar5Component {
 
 @Component({
   selector: 'app-setup-var6',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex flex-col font-sans relative bg-black">
       <div class="absolute inset-0 z-0">
@@ -380,6 +396,7 @@ export class SetupVar5Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <!-- Cinematic Letterbox Top -->
       <div class="h-24 md:h-32 bg-black w-full relative z-20 flex items-center justify-center border-b border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
@@ -451,9 +468,11 @@ export class SetupVar5Component {
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var6" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar6Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';
@@ -464,7 +483,7 @@ export class SetupVar6Component {
 
 @Component({
   selector: 'app-setup-var7',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex flex-col font-sans relative bg-black overflow-hidden">
       <!-- Background Outside -->
@@ -480,6 +499,7 @@ export class SetupVar6Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       @if (!inside) {
         <div class="relative z-10 flex-grow flex items-center justify-center animate-in">
@@ -563,9 +583,11 @@ export class SetupVar6Component {
         </div>
       }
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var7" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar7Component {
+  showCode = false;
   inside = false;
   step = 1;
   storeName = '';
@@ -578,7 +600,7 @@ export class SetupVar7Component {
 
 @Component({
   selector: 'app-setup-var8',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-center justify-center font-sans relative bg-black">
       <div class="absolute inset-0 z-0">
@@ -587,6 +609,7 @@ export class SetupVar7Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <div class="relative z-10 w-full max-w-md p-8">
         <!-- The Mirror Frame -->
@@ -625,9 +648,11 @@ export class SetupVar7Component {
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var8" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar8Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';
@@ -637,7 +662,7 @@ export class SetupVar8Component {
 
 @Component({
   selector: 'app-setup-var9',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-center justify-center font-sans relative bg-[#2a241c]">
       <div class="absolute inset-0 z-0">
@@ -645,6 +670,7 @@ export class SetupVar8Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <div class="relative z-10 w-full max-w-2xl p-8">
         <!-- Parchment Map UI -->
@@ -692,9 +718,11 @@ export class SetupVar8Component {
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var9" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar9Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';
@@ -704,7 +732,7 @@ export class SetupVar9Component {
 
 @Component({
   selector: 'app-setup-var10',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-end justify-center font-sans relative bg-black pb-12">
       <div class="absolute inset-0 z-0">
@@ -713,6 +741,7 @@ export class SetupVar9Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <div class="relative z-10 w-full max-w-4xl flex items-end gap-6 px-4">
         <!-- Goblin Avatar -->
@@ -761,9 +790,11 @@ export class SetupVar9Component {
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var10" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar10Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';
@@ -773,7 +804,7 @@ export class SetupVar10Component {
 
 @Component({
   selector: 'app-setup-var11',
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CodeModalComponent],
   template: `
     <main class="min-h-screen flex items-center justify-center font-sans relative bg-black">
       <div class="absolute inset-0 z-0">
@@ -782,6 +813,7 @@ export class SetupVar10Component {
       </div>
       
       <a routerLink="/" class="absolute top-6 left-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-70 hover:opacity-100 transition-opacity z-50 bg-black/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/10 text-white"><span class="material-icons text-base">arrow_back</span> Retornar</a>
+      <button (click)="showCode = true" class="absolute top-6 right-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase opacity-90 hover:opacity-100 transition-opacity z-50 bg-amber-600/80 px-4 py-2 rounded-full backdrop-blur-sm border border-amber-500/50 text-white shadow-lg shadow-amber-900/20"><span class="material-icons text-base">code</span> Ver Código</button>
 
       <div class="relative z-10 text-center w-full max-w-lg p-8">
         <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-indigo-500/20 blur-xl animate-pulse absolute left-1/2 -translate-x-1/2 top-0"></div>
@@ -821,9 +853,11 @@ export class SetupVar10Component {
         </div>
       </div>
     </main>
-  `
+  
+      @if (showCode) { <app-code-modal variation="var11" (closeEvent)="showCode = false"></app-code-modal> }`
 })
 export class SetupVar11Component {
+  showCode = false;
   step = 1;
   storeName = '';
   domain = '';

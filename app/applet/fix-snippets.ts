@@ -1,0 +1,114 @@
+import * as fs from 'fs';
+
+const filePath = './src/app/code-snippets.ts';
+let content = fs.readFileSync(filePath, 'utf8');
+
+const medievalBlock = `/* 
+================================================================================
+INSTRUÇÕES DE ESTILO (TAILWIND CSS v4)
+================================================================================
+Copie o conteúdo abaixo e cole no seu arquivo global de estilos (ex: styles.css ou global.css).
+O projeto utiliza Tailwind CSS v4 localmente.
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Lora", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cinzel", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --color-parchment: #f4e4bc;
+  --color-parchment-dark: #e8d8b0;
+  --color-ink: #2c1e16;
+  --color-ink-light: #4a3b32;
+  --color-accent: #8b0000;
+  --color-accent-hover: #660000;
+  --color-gold: #d4af37;
+}
+
+body {
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+================================================================================
+*/\n\n`;
+
+const genericBlock = `/* 
+================================================================================
+INSTRUÇÕES DE ESTILO (TAILWIND CSS v4)
+================================================================================
+Copie o conteúdo abaixo e cole no seu arquivo global de estilos (ex: styles.css ou global.css).
+O projeto utiliza Tailwind CSS v4 localmente.
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+================================================================================
+*/\n\n`;
+
+for (let i = 1; i <= 17; i++) {
+  const varName = "var" + i;
+  const block = (i <= 12) ? medievalBlock : genericBlock;
+  const escapedBlock = block.replace(/\n/g, '\\n').replace(/"/g, '\\"');
+  
+  const varIndex = content.indexOf('"' + varName + '": {');
+  if (varIndex === -1) continue;
+  
+  const angularIndex = content.indexOf('"angular": "', varIndex);
+  if (angularIndex !== -1) {
+    const afterQuote = content.substring(angularIndex + 12, angularIndex + 14);
+    if (afterQuote === '@C') {
+      content = content.substring(0, angularIndex + 12) + escapedBlock + content.substring(angularIndex + 12);
+    }
+  }
+  
+  const nextjsIndex = content.indexOf('"nextjs": "', varIndex);
+  if (nextjsIndex !== -1) {
+    const afterQuote = content.substring(nextjsIndex + 11, nextjsIndex + 13);
+    if (afterQuote === 'im') {
+      content = content.substring(0, nextjsIndex + 11) + escapedBlock + content.substring(nextjsIndex + 11);
+    }
+  }
+}
+
+fs.writeFileSync(filePath, content, 'utf8');
+console.log('Updated code-snippets.ts');
